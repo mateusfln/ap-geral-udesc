@@ -1,4 +1,3 @@
-/* Reset de estilo básico */
 * {
     margin: 0;
     padding: 0;
@@ -94,20 +93,19 @@ table th {
     background-color: #5284e7;
 }
 
-/* Estilo básico para a flash message */
 .flash-message {
     display: none;
     position: fixed;
-    top: 20px; /* Distância do topo da tela */
+    top: 20px;
     left: 50%;
-    transform: translateX(-50%); /* Centraliza horizontalmente */
-    min-width: 280px; /* Largura mínima para dispositivos pequenos */
-    max-width: 90%; /* Largura máxima em porcentagem para telas grandes */
-    background: linear-gradient(145deg, #ff5f6d, #ffc3a0); /* Gradiente bonito */
+    transform: translateX(-50%);
+    min-width: 280px;
+    max-width: 90%;
+    background: linear-gradient(145deg, #ff5f6d, #ffc3a0);
     color: white;
-    padding: 15px 20px; /* Ajuste de padding */
+    padding: 15px 20px;
     border-radius: 8px;
-    font-size: 14px; /* Tamanho de fonte reduzido em telas pequenas */
+    font-size: 14px;
     font-family: 'Arial', sans-serif;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -115,75 +113,67 @@ table th {
     opacity: 0;
     transition: opacity 0.5s ease, transform 0.3s ease-in-out;
     z-index: 1000;
-    flex-wrap: nowrap; /* Impede o texto de quebrar em múltiplas linhas */
-    text-align: center; /* Centraliza o texto */
+    flex-wrap: nowrap;
+    text-align: center;
 }
 
-/* Flash message para sucesso */
 .flash-message.success {
-    background: linear-gradient(145deg, #4caf50, #66bb6a); /* Verde para sucesso */
+    background: linear-gradient(145deg, #4caf50, #66bb6a);
 }
 
-/* Flash message para erro */
 .flash-message.error {
-    background: linear-gradient(145deg, #f44336, #e57373); /* Vermelho para erro */
+    background: linear-gradient(145deg, #f44336, #e57373);
 }
 
-/* Estilo do ícone */
 .flash-message i {
     margin-right: 15px;
-    font-size: 22px; /* Ajuste o tamanho do ícone para telas menores */
+    font-size: 22px;
 }
 
-/* Animação de aparecer */
 .flash-message.show {
     display: flex;
     opacity: 1;
-    transform: translateX(-50%); /* Mantém centralizado horizontalmente */
+    transform: translateX(-50%);
 }
 
-/* Animação de desaparecer */
 .flash-message.hide {
     opacity: 0;
-    transform: translateX(-50%); /* Mantém a centralização horizontal durante o desaparecimento */
+    transform: translateX(-50%);
 }
 
-/* Responsividade para telas menores */
 @media (max-width: 767px) {
     .flash-message {
-        min-width: 250px; /* Menor largura em dispositivos muito pequenos */
-        padding: 12px 15px; /* Menor padding em telas pequenas */
-        font-size: 12px; /* Menor tamanho de texto em telas pequenas */
+        min-width: 250px;
+        padding: 12px 15px;
+        font-size: 12px;
     }
 
     .flash-message i {
-        font-size: 20px; /* Ícone um pouco menor em dispositivos pequenos */
-        margin-right: 10px; /* Menor espaço ao lado do ícone */
+        font-size: 20px;
+        margin-right: 10px;
     }
 }
 
-/* Responsividade para tablets (telas entre 768px e 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
     .flash-message {
-        min-width: 300px; /* Largura mínima para tablets */
-        font-size: 14px; /* Ajuste para tamanhos de fonte confortáveis */
+        min-width: 300px;
+        font-size: 14px;
     }
 
     .flash-message i {
-        font-size: 22px; /* Tamanho ideal do ícone para tablets */
+        font-size: 22px;
     }
 }
 
-/* Responsividade para desktops e telas maiores */
 @media (min-width: 1025px) {
     .flash-message {
-        min-width: 300px; /* Largura padrão para telas maiores */
-        font-size: 16px; /* Fonte maior para telas grandes */
-        padding: 15px 30px; /* Maior padding em telas grandes */
+        min-width: 300px;
+        font-size: 16px;
+        padding: 15px 30px;
     }
 
     .flash-message i {
-        font-size: 24px; /* Ícone maior em telas grandes */
+        font-size: 24px;
     }
 }
 
