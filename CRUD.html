@@ -4,104 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD de Clientes</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h2 { text-align: center; }
-        form { margin-bottom: 20px; }
-        input, button { padding: 10px; margin: 5px; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
-        button { cursor: pointer; }
-        .action-buttons { text-align: center; }
-    </style>
+    <link rel="stylesheet" href="CRUD.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+<div id="flashMessage" class="flash-message">
+    <i id="flashIcon" class="material-icons"></i>
+    <span id="flashText"></span>
+</div>
 <body>
+    
+    <div class="container">
+        
 
-    <h2>Cadastro de Clientes</h2>
+        <h2 id="tituloFormulario">Insira os dados do Cliente</h2>
 
-    <!-- Formulário de Cadastro -->
-    <form id="formCadastro">
-        <input type="text" id="nome" placeholder="Nome" required><br>
-        <input type="email" id="email" placeholder="E-mail" required><br>
-        <input type="tel" id="telefone" placeholder="Telefone" required><br>
-        <input type="text" id="endereco" placeholder="Endereço" required><br>
-        <button type="button" onclick="adicionarCliente()">Cadastrar Cliente</button>
-    </form>
+        <!-- Formulário de Cadastro -->
+        <form id="formCadastro" onsubmit="return adicionarCliente()">
+            <input type="text" id="nome" placeholder="Nome" >
+            <input type="email" id="email" placeholder="E-mail" >
+            <input type="text" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" oninput="mascaraTelefone(this)" maxlength="15">
+            <input type="text" id="endereco" placeholder="Endereço" >
+            <button type="submit">Salvar</button>
+        </form>
 
-    <!-- Tabela de Clientes -->
-    <h3>Clientes Cadastrados</h3>
-    <table id="tabelaClientes">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>E-mail</th>
-                <th>Telefone</th>
-                <th>Endereço</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Dados serão inseridos aqui -->
-        </tbody>
-    </table>
+        <!-- Tabela de Clientes -->
+        <h3>Clientes Cadastrados</h3>
+        <table id="tabelaClientes">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Telefone</th>
+                    <th>Endereço</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dados inseridos dinamicamente -->
+            </tbody>
+        </table>
+    </div>
 
-    <script>
-        const clientes = [];
-
-        // Função para adicionar cliente
-        function adicionarCliente() {
-            const nome = document.getElementById('nome').value;
-            const email = document.getElementById('email').value;
-            const telefone = document.getElementById('telefone').value;
-            const endereco = document.getElementById('endereco').value;
-
-            const cliente = { nome, email, telefone, endereco };
-            clientes.push(cliente);
-
-            atualizarTabela();
-            limparFormulario();
-        }
-
-        // Função para limpar o formulário
-        function limparFormulario() {
-            document.getElementById('formCadastro').reset();
-        }
-
-        // Função para atualizar a tabela de clientes
-        function atualizarTabela() {
-            const tbody = document.getElementById('tabelaClientes').getElementsByTagName('tbody')[0];
-            tbody.innerHTML = ''; // Limpa a tabela antes de preencher novamente
-
-            clientes.forEach((cliente, index) => {
-                const row = tbody.insertRow();
-                row.innerHTML = `
-                    <td>${cliente.nome}</td>
-                    <td>${cliente.email}</td>
-                    <td>${cliente.telefone}</td>
-                    <td>${cliente.endereco}</td>
-                    <td>
-                        <button onclick="editarCliente(${index})">Editar</button>
-                        <button onclick="excluirCliente(${index})">Excluir</button>
-                    </td>
-                `;
-            });
-        }
-
-        // Função para editar um cliente
-        function editarCliente(index) {
-            const cliente = clientes[index];
-            document.getElementById('nome').value = cliente.nome;
-            document.getElementById('email').value = cliente.email;
-            document.getElementById('telefone').value = cliente.telefone;
-            document.getElementById('endereco').value = cliente.endereco;
-        }
-
-        // Função para excluir um cliente
-        function excluirCliente(index) {
-            clientes.splice(index, 1);
-            atualizarTabela();
-        }
-    </script>
-
+    <script src="CRUD.js"></script>
 </body>
 </html>

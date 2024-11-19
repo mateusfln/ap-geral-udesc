@@ -1,0 +1,189 @@
+/* Reset de estilo básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+form input {
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+.button-delete {
+    padding: 5px 10px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-delete:hover {
+    background-color: #e04e3a;
+}
+
+.button-edit {
+    padding: 5px 10px;
+    background-color: lightskyblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-edit:hover {
+    background-color: #5284e7;
+}
+
+/* Estilo básico para a flash message */
+.flash-message {
+    display: none;
+    position: fixed;
+    top: 20px; /* Distância do topo da tela */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza horizontalmente */
+    min-width: 280px; /* Largura mínima para dispositivos pequenos */
+    max-width: 90%; /* Largura máxima em porcentagem para telas grandes */
+    background: linear-gradient(145deg, #ff5f6d, #ffc3a0); /* Gradiente bonito */
+    color: white;
+    padding: 15px 20px; /* Ajuste de padding */
+    border-radius: 8px;
+    font-size: 14px; /* Tamanho de fonte reduzido em telas pequenas */
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.3s ease-in-out;
+    z-index: 1000;
+    flex-wrap: nowrap; /* Impede o texto de quebrar em múltiplas linhas */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Flash message para sucesso */
+.flash-message.success {
+    background: linear-gradient(145deg, #4caf50, #66bb6a); /* Verde para sucesso */
+}
+
+/* Flash message para erro */
+.flash-message.error {
+    background: linear-gradient(145deg, #f44336, #e57373); /* Vermelho para erro */
+}
+
+/* Estilo do ícone */
+.flash-message i {
+    margin-right: 15px;
+    font-size: 22px; /* Ajuste o tamanho do ícone para telas menores */
+}
+
+/* Animação de aparecer */
+.flash-message.show {
+    display: flex;
+    opacity: 1;
+    transform: translateX(-50%); /* Mantém centralizado horizontalmente */
+}
+
+/* Animação de desaparecer */
+.flash-message.hide {
+    opacity: 0;
+    transform: translateX(-50%); /* Mantém a centralização horizontal durante o desaparecimento */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 767px) {
+    .flash-message {
+        min-width: 250px; /* Menor largura em dispositivos muito pequenos */
+        padding: 12px 15px; /* Menor padding em telas pequenas */
+        font-size: 12px; /* Menor tamanho de texto em telas pequenas */
+    }
+
+    .flash-message i {
+        font-size: 20px; /* Ícone um pouco menor em dispositivos pequenos */
+        margin-right: 10px; /* Menor espaço ao lado do ícone */
+    }
+}
+
+/* Responsividade para tablets (telas entre 768px e 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .flash-message {
+        min-width: 300px; /* Largura mínima para tablets */
+        font-size: 14px; /* Ajuste para tamanhos de fonte confortáveis */
+    }
+
+    .flash-message i {
+        font-size: 22px; /* Tamanho ideal do ícone para tablets */
+    }
+}
+
+/* Responsividade para desktops e telas maiores */
+@media (min-width: 1025px) {
+    .flash-message {
+        min-width: 300px; /* Largura padrão para telas maiores */
+        font-size: 16px; /* Fonte maior para telas grandes */
+        padding: 15px 30px; /* Maior padding em telas grandes */
+    }
+
+    .flash-message i {
+        font-size: 24px; /* Ícone maior em telas grandes */
+    }
+}
+
