@@ -12,39 +12,71 @@
     <span id="flashText"></span>
 </div>
 <body>
-    
-    <div class="container">
-        
+    <header>
+        <nav>
+            <div class="menu-icon" id="menuIcon">
+                <i class="material-icons">menu</i>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#">Início</a>
+                <a href="#">Meus Documentos</a>
+                <a href="#">Cadastro de Empresas</a>
+                <a href="#">Ajuda</a>
+            </div>
+        </nav>
+        <div class="perfil">
+            <img src="Perfil.png" alt="Perfil">
+            <span>Renan C.</span>
+            <i class="material-icons">settings</i>
+            <i class="material-icons">logout</i>
+        </div>
+    </header>
 
+    <div class="search-bar">
+        <input type="text" placeholder="Pesquisar">
+        <i class="material-icons">search</i>
+    </div>
+
+    <div class="container">
         <h2 id="tituloFormulario">Insira os dados do Cliente</h2>
 
-        <!-- Formulário de Cadastro -->
         <form id="formCadastro" onsubmit="return adicionarCliente()">
-            <input type="text" id="nome" placeholder="Nome" >
-            <input type="email" id="email" placeholder="E-mail" >
+            <input type="text" id="nome" placeholder="Nome">
+            <input type="email" id="email" placeholder="E-mail">
             <input type="text" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" oninput="mascaraTelefone(this)" maxlength="15">
-            <input type="text" id="endereco" placeholder="Endereço" >
+            <input type="text" id="endereco" placeholder="Endereço">
             <button type="submit">Salvar</button>
         </form>
 
-        <!-- Tabela de Clientes -->
         <h3>Clientes Cadastrados</h3>
-        <table id="tabelaClientes">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>E-mail</th>
-                    <th>Telefone</th>
-                    <th>Endereço</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Dados inseridos dinamicamente -->
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table id="tabelaClientes">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Telefone</th>
+                        <th>Endereço</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dados inseridos dinamicamente pelo js -->
+                </tbody>
+            </table>
+        </div>
     </div>
 
+    <footer>
+        doc-it©2024 v1.0
+    </footer>
+
     <script src="CRUD.js"></script>
+    <script>
+        document.getElementById("menuIcon").addEventListener("click", function() {
+            const navLinks = document.getElementById("navLinks");
+            navLinks.classList.toggle("show");
+        });
+    </script>
 </body>
 </html>

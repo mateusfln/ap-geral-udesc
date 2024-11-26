@@ -1,5 +1,5 @@
-const clientes = [];
-let clienteEditandoIndex = -1; 
+const clientes = []; //Mock do banco de dados
+let clienteEditandoIndex = -1;
 
 function adicionarCliente() {
     const nome = document.getElementById('nome').value.trim();
@@ -44,35 +44,29 @@ function validarNome(nome) {
     return nome.length > 0;
 }
 
-
 function validarEmail(email) {
     const regexEmail = /^[a-zA-Z0-9._-]+@[a-zAZ0-9.-]+\.[a-zA-Z]{2,6}$/;
     return regexEmail.test(email);
 }
-
 
 function validarTelefone(telefone) {
     const telefoneLimpo = telefone.replace(/\D/g, ''); 
     return telefoneLimpo.length === 10 || telefoneLimpo.length === 11;
 }
 
-
 function validarEndereco(endereco) {
-    return endereco.length > 0;
+    return endereco.length > 0 && endereco.lenght != '';
 }
-
 
 function limparFormulario() {
     document.getElementById('formCadastro').reset();
     clienteEditandoIndex = -1; 
 }
 
-
 function atualizarTabela() {
     const tbody = document.getElementById('tabelaClientes').getElementsByTagName('tbody')[0];
     tbody.innerHTML = ''; 
 
-    
     clientes.forEach((cliente, index) => {
         const row = tbody.insertRow();
         row.innerHTML = `
@@ -87,7 +81,6 @@ function atualizarTabela() {
         `;
     });
 }
-
 
 function excluirCliente(index) {
     const confirmar = confirm("Você realmente deseja excluir este cliente?");
@@ -129,11 +122,7 @@ function exibirFlashMessage(mensagem, tipo) {
     flashMessageElement.classList.remove("success", "error");
     flashMessageElement.classList.add(tipo);
 
-    if (tipo === "success") {
-        flashIcon.textContent = "check_circle";
-    } else {
-        flashIcon.textContent = "error";
-    }
+    flashIcon.textContent = tipo === "success" ? "check_circle" : "error";
 
     flashMessageElement.classList.add("show");
 
